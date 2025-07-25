@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "fr.mrmicky"
+group = "fr.hyzo"
 version = "2.1.5"
 description = "Lightweight packet-based scoreboard API for Bukkit plugins."
 

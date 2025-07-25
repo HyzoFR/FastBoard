@@ -15,7 +15,8 @@ Lightweight packet-based scoreboard API for Bukkit plugins, compatible with all 
 * Compatible with all Minecraft versions starting with 1.7.10
 * Small (around 750 lines of code with the Javadoc) and no dependencies
 * Easy to use
-* Dynamic scoreboard size: you don't need to add/remove lines, you can directly give a string list (or array) to change all the lines
+* Dynamic scoreboard size: you don't need to add/remove lines, you can directly give a string list (or array) to change
+  all the lines
 * Everything is at the packet level, so it works with other plugins using scoreboard and/or teams
 * Can be used asynchronously
 * Supports up to 30 characters per line on 1.12.2 and below
@@ -28,7 +29,9 @@ Lightweight packet-based scoreboard API for Bukkit plugins, compatible with all 
 ## Installation
 
 ### Maven
+
 ```xml
+
 <build>
     <plugins>
         <plugin>
@@ -46,7 +49,7 @@ Lightweight packet-based scoreboard API for Bukkit plugins, compatible with all 
             <configuration>
                 <relocations>
                     <relocation>
-                        <pattern>fr.mrmicky.fastboard</pattern>
+                        <pattern>fr.hyzo.fastboard</pattern>
                         <!-- Replace 'com.yourpackage' with the package of your plugin -->
                         <shadedPattern>com.yourpackage.fastboard</shadedPattern>
                     </relocation>
@@ -57,16 +60,17 @@ Lightweight packet-based scoreboard API for Bukkit plugins, compatible with all 
 </build>
 
 <dependencies>
-    <dependency>
-        <groupId>fr.mrmicky</groupId>
-        <artifactId>fastboard</artifactId>
-        <version>2.1.5</version>
-    </dependency>
+<dependency>
+    <groupId>fr.hyzofr.hyzo</groupId>
+    <artifactId>fastboard</artifactId>
+    <version>2.1.5</version>
+</dependency>
 </dependencies>
 ```
 
 > [!NOTE]
-> When using Maven, make sure to build directly with Maven and not with your IDE configuration (on IntelliJ IDEA: in the `Maven` tab on the right, in `Lifecycle`, use `package`).
+> When using Maven, make sure to build directly with Maven and not with your IDE configuration (on IntelliJ IDEA: in the
+`Maven` tab on the right, in `Lifecycle`, use `package`).
 > The output jar file is located in the `target/` folder of your project.
 
 ### Gradle
@@ -81,12 +85,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'fr.mrmicky:fastboard:2.1.5'
+    implementation 'fr.hyzo:fastboard:2.1.5'
 }
 
 shadowJar {
     // Replace 'com.yourpackage' with the package of your plugin 
-    relocate 'fr.mrmicky.fastboard', 'com.yourpackage.fastboard'
+    relocate 'fr.hyzo.fastboard', 'com.yourpackage.fastboard'
 }
 ```
 
@@ -120,9 +124,9 @@ board.updateLines(
 Small example plugin with a scoreboard that refreshes every second:
 
 ```java
-package fr.mrmicky.fastboard.example;
+package fr.hyzo.fastboard.example;
 
-import fr.mrmicky.fastboard.FastBoard;
+import fr.hyzo.fastboard.FastBoard;
 import org.bukkit.ChatColor;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
@@ -189,20 +193,23 @@ public final class ExamplePlugin extends JavaPlugin implements Listener {
 
 For servers on modern [PaperMC](https://papermc.io) versions, FastBoard supports
 using [Adventure](https://github.com/KyoriPowered/adventure) components instead of strings,
-by using the `fr.mrmicky.fastboard.adventure.FastBoard` class.
+by using the `fr.hyzo.fastboard.adventure.FastBoard` class.
 
 > [!WARNING]
 > With Adventure, on servers below Minecraft 1.13, lines are truncated to a maximum of 16 characters.
-> To get around this limit, upgrade to a newer version of Minecraft or use the non-Adventure version (`fr.mrmicky.fastboard.FastBoard`).
+> To get around this limit, upgrade to a newer version of Minecraft or use the non-Adventure version (
+`fr.hyzo.fastboard.FastBoard`).
 
 ## RGB colors
 
-When using the non-Adventure version of FastBoard, RGB colors can be added on 1.16 and higher with `ChatColor.of("#RRGGBB")` (`net.md_5.bungee.api.ChatColor` import).
+When using the non-Adventure version of FastBoard, RGB colors can be added on 1.16 and higher with
+`ChatColor.of("#RRGGBB")` (`net.md_5.bungee.api.ChatColor` import).
 
 ## Custom number formatting
 
 For servers on Minecraft 1.20.3 and above, FastBoard supports custom number formatting for scores.
-By default, it uses the blank format, so that no score is visible, but it's also possible to set custom scores using `FastBoard#updateLine(line, text, scoreText)`,
+By default, it uses the blank format, so that no score is visible, but it's also possible to set custom scores using
+`FastBoard#updateLine(line, text, scoreText)`,
 `FastBoard#updateLines(lines, scores)` and `FastBoard#updateScore(line, text)`.
 
 Passing a `null` value as a score will result in a reset to the default blank formatting.
@@ -210,8 +217,10 @@ Passing a `null` value as a score will result in a reset to the default blank fo
 ## ViaBackwards compatibility
 
 When using ViaBackwards on a post-1.13 server with pre-1.13 clients, older clients
-may receive incomplete lines. To solve this problem, you can override the `hasLinesMaxLength()` method and return `true` for older clients.
+may receive incomplete lines. To solve this problem, you can override the `hasLinesMaxLength()` method and return `true`
+for older clients.
 For example, using the ViaVersion API:
+
 ```java
 FastBoard board = new FastBoard(player) {
     @Override

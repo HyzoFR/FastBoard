@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package fr.mrmicky.fastboard.adventure;
+package fr.hyzo.fastboard.adventure;
 
-import fr.mrmicky.fastboard.FastBoardBase;
-import fr.mrmicky.fastboard.FastReflection;
+import fr.hyzo.fastboard.FastBoardBase;
+import fr.hyzo.fastboard.FastReflection;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
